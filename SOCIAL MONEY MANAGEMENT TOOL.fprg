@@ -1,0 +1,738 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ABHIMANYU"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-25 07:55:43 PM"/>
+        <attribute name="created" value="QUJISU1BTllVO0FCSElNQU5ZVVY7MjAyMi0wMS0xNjswNzo1OTo0MCBBTTsyNjk0"/>
+        <attribute name="edited" value="QmhhcmdhdjtZRUxMSU5BU1JJQkhBUkc7MjAyMi0wMi0wMjsxMjo0NjowNiBQTTsyO1VzZXIxO0RFU0tUT1AtQUdFQUdMVjsyMDIyLTAxLTMxOzExOjMyOjI1IFBNO2xhayByZWN1cnJpbmcgKDEpLmZwcmc7ODA5OA=="/>
+        <attribute name="edited" value="QmhhcmdhdjtZRUxMSU5BU1JJQkhBUkc7MjAyMi0wMi0wMjswMTowNzo1OSBQTTsxO0JoYXJnYXY7WUVMTElOQVNSSUJIQVJHOzIwMjItMDEtMTk7MDM6NDU6MDMgUE07ZXhwZW5zZSB0cmFja2VyICgxKS5mcHJnOzg1OTU="/>
+        <attribute name="edited" value="QmhhcmdhdjtZRUxMSU5BU1JJQkhBUkc7MjAyMi0wMi0wMjswMToyMjowOSBQTTsyO2NoYXJhO0NIQVJBTjsyMDIyLTAxLTE5OzA5OjE5OjM1IEFNO3NtbXQuZnByZzs2NDUz"/>
+        <attribute name="edited" value="QmhhcmdhdjtZRUxMSU5BU1JJQkhBUkc7MjAyMi0wMi0wMjswMTo1MzoxNCBQTTsxO1VzZXIxO0RFU0tUT1AtQUdFQUdMVjsyMDIyLTAyLTAyOzA5OjQyOjI4IEFNO3JlbWluZGVyLmZwcmc7NzQ1OA=="/>
+        <attribute name="edited" value="QmhhcmdhdjtZRUxMSU5BU1JJQkhBUkc7MjAyMi0wNC0yNTswNzo1NTo0MyBQTTs1NDszMjY4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;WELCOME TO SOCIAL MONEY MANAGEMENT TOOL&quot;" newline="True"/>
+            <declare name="username, userpassword, usermail" type="String" array="True" size="11"/>
+            <declare name="number" type="Integer" array="False" size=""/>
+            <output expression="&quot;PLEASE ENTER THE NUMBER OF MEMBERS IN THE GROUP&quot; &amp; &quot;    &#13;&#10;MAXIMUM NUMBER OF USERS IN A GROUP IS 10 AND MINIMUM NUMBER OF USERS IN A GROUP IS 2&quot; &amp; &quot; &#13;&#10;(EXCLUDING THE ADMIN)&quot;" newline="True"/>
+            <input variable="number"/>
+            <if expression="number&lt;2 || number&gt;10">
+                <then>
+                    <output expression="&quot;MINIMUM NUMBER OF USERS IN A GROUP IS 2 AND MAXIMUM NUMBER OF USERS IN A GROUP IS 10&quot;" newline="True"/>
+                    <breakpoint/>
+                </then>
+                <else/>
+            </if>
+            <call expression="ADMIN(username,userpassword,usermail,number)"/>
+            <declare name="usernameL, usermailL, userpasswordL, usernameS, usermailS, userpasswordS, username1, usermail1, userpassword1" type="String" array="False" size=""/>
+            <assign variable="usernameL" expression="&quot;a&quot;"/>
+            <assign variable="usermailL" expression="&quot;a&quot;"/>
+            <assign variable="userpasswordL" expression="&quot;a&quot;"/>
+            <assign variable="usernameS" expression="&quot;a&quot;"/>
+            <assign variable="usermailS" expression="&quot;a&quot;"/>
+            <assign variable="userpasswordS" expression="&quot;a&quot;"/>
+            <assign variable="username1" expression="&quot;a&quot;"/>
+            <assign variable="usermail1" expression="&quot;a&quot;"/>
+            <assign variable="userpassword1" expression="&quot;a&quot;"/>
+            <call expression="CHECK(usernameL,usermailL, userpasswordL,usernameS,usermailS, userpasswordS, username,usermail,userpassword,number,username1,usermail1,userpassword1)"/>
+            <declare name="debtnumber" type="Integer" array="False" size=""/>
+            <assign variable="debtnumber" expression="random(10000000)"/>
+            <declare name="choice" type="String" array="False" size=""/>
+            <declare name="billinfo" type="String" array="True" size="8"/>
+            <declare name="debtinfo" type="String" array="True" size="12"/>
+            <declare name="amount, term" type="Integer" array="False" size=""/>
+            <declare name="interest, EMI, debtamount" type="Real" array="False" size=""/>
+            <declare name="type, EMIneed" type="String" array="False" size=""/>
+            <assign variable="type" expression="&quot;borrow or lend&quot;"/>
+            <assign variable="EMIneed" expression="&quot;yes&quot;"/>
+            <assign variable="term" expression="1"/>
+            <assign variable="EMI" expression="1"/>
+            <assign variable="debtamount" expression="1"/>
+            <output expression="&quot;WELCOME TO THE DEBT SECTION&quot;" newline="True"/>
+            <output expression="&quot;ENTER THE AMOUNT FOR THE DEBT&quot;" newline="True"/>
+            <input variable="amount"/>
+            <output expression="&quot;ENTER THE INTEREST FOR THE DEBT&quot;" newline="True"/>
+            <input variable="interest"/>
+            <call expression="DEBTS(amount,interest,type,username1,usermail1,userpassword1,debtnumber,EMIneed,term,EMI,debtamount,debtinfo)"/>
+            <call expression="BILL(number,billinfo)"/>
+            <declare name="y" type="Integer" array="False" size=""/>
+            <assign variable="y" expression="PAYMENTPAGE(debtinfo, billinfo)"/>
+            <declare name="x" type="Integer" array="False" size=""/>
+            <declare name="status" type="String" array="False" size=""/>
+            <assign variable="x" expression="100"/>
+            <assign variable="status" expression="&quot;payment_status&quot;"/>
+            <call expression="SMMT(y)"/>
+            <call expression="RECURRING"/>
+            <call expression="EXPENSETRACKER"/>
+            <call expression="REMAINDER"/>
+            <output expression="&quot;THANK YOU FOR USING OUR APPLICATION.&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="ADMIN" type="None" variable="">
+        <parameters>
+            <parameter name="username" type="String" array="True"/>
+            <parameter name="usermail" type="String" array="True"/>
+            <parameter name="userpassword" type="String" array="True"/>
+            <parameter name="number" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="i, age" type="Integer" array="False" size=""/>
+            <output expression="&quot;PLEASE ENTER YOUR AGE&quot;" newline="True"/>
+            <input variable="age"/>
+            <if expression="age&gt;=16">
+                <then>
+                    <output expression="&quot;ENTER NAME OF THE ADMIN&quot;" newline="True"/>
+                    <input variable="username[0]"/>
+                    <output expression="&quot;PLEASE ENTER THE EMAIL ID OF THE ADMIN&quot;" newline="True"/>
+                    <input variable="usermail[0]"/>
+                    <output expression="&quot;PLEASE ENTER THE PASSWORD TO BE SET FOR THE ADMIN&quot;" newline="True"/>
+                    <input variable="userpassword[0]"/>
+                    <for variable="i" start="1" end="number" direction="inc" step="1">
+                        <output expression="&quot;PLEASE ENTER YOUR AGE&quot;" newline="True"/>
+                        <input variable="age"/>
+                        <if expression="age&gt;=16">
+                            <then>
+                                <output expression="&quot;PLEASE ENTER THE NAME OF GROUP MEMBER &quot; &amp; ToString(i)" newline="True"/>
+                                <input variable="username[i]"/>
+                                <output expression="&quot;PLEASE ENTER THE EMAIL ID OF GROUP MEMBER &quot; &amp; ToString(i)" newline="True"/>
+                                <input variable="usermail[i]"/>
+                                <output expression="&quot;PLEASE ENTER THE PASSWORD TO BE SET FOR GROUP MEMBER &quot; &amp; ToString(i)" newline="True"/>
+                                <input variable="userpassword[i]"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;AGE ELIGIBILITY IS NOT SATISFIED&quot;" newline="True"/>
+                                <breakpoint/>
+                            </else>
+                        </if>
+                    </for>
+                    <output expression="&quot;USERGROUP1 IS CREATED&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;AGE ELIGIBILITY IS NOT SATISFIED&quot;" newline="True"/>
+                    <breakpoint/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="BILL" type="None" variable="">
+        <parameters>
+            <parameter name="members" type="Integer" array="False"/>
+            <parameter name="billinfo" type="String" array="True"/>
+        </parameters>
+        <body>
+            <output expression="&quot;WELCOME TO THE BILL SECTION&quot;" newline="True"/>
+            <declare name="billid" type="Integer" array="False" size=""/>
+            <declare name="absentmemberscount, i" type="Integer" array="False" size=""/>
+            <declare name="billamount, amtduebyeachmember" type="Real" array="False" size=""/>
+            <declare name="purpose, date" type="String" array="False" size=""/>
+            <output expression="&quot;IS THERE ANY MEMBER WHO HAS NOT PARTICIPATED IN THIS ACTIVITY?&#13;&#10;IF YES THEN PLEASE ENTER THE NUMBER BELOW.&#13;&#10;IF NO THEN ENTER 0.&quot;" newline="True"/>
+            <input variable="absentmemberscount"/>
+            <if expression="absentmemberscount!=0">
+                <then>
+                    <declare name="absentmembersname" type="String" array="True" size="absentmemberscount"/>
+                    <for variable="i" start="0" end="absentmemberscount-1" direction="inc" step="1">
+                        <input variable="absentmembersname[i]"/>
+                    </for>
+                </then>
+                <else/>
+            </if>
+            <assign variable="billid" expression="random(10000000)"/>
+            <assign variable="billinfo[0]" expression="&quot;BILL ID=&quot;"/>
+            <assign variable="billinfo[1]" expression="ToString(billid)"/>
+            <output expression="&quot;PLEASE ENTER THE TOTAL BILL AMOUNT&quot;" newline="True"/>
+            <input variable="billamount"/>
+            <output expression="&quot;PLEASE ENTER THE PURPOSE OF THE BILL&quot;" newline="True"/>
+            <input variable="purpose"/>
+            <output expression="&quot;PLEASE ENTER THE DATE OF PAYMENT&#13;&#10;**PLEASE ENTER IN DOUBLE QUOTES&quot;" newline="True"/>
+            <input variable="date"/>
+            <assign variable="billinfo[2]" expression="&quot;Activity Name=&quot;"/>
+            <assign variable="billinfo[3]" expression="purpose"/>
+            <assign variable="amtduebyeachmember" expression="(billamount)/(members+1)"/>
+            <assign variable="billinfo[4]" expression="&quot;Amount Due By Each Member=&quot;"/>
+            <assign variable="billinfo[5]" expression="ToString(amtduebyeachmember)"/>
+            <assign variable="billinfo[6]" expression="&quot;Date Of Activity=&quot;"/>
+            <assign variable="billinfo[7]" expression="date"/>
+            <assign variable="i" expression="0"/>
+            <for variable="i" start="0" end="7" direction="inc" step="2">
+                <output expression="billinfo[i] &amp; &quot; = &quot; &amp; billinfo[i+1]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="CHECK" type="None" variable="">
+        <parameters>
+            <parameter name="usernameL" type="String" array="False"/>
+            <parameter name="userpasswordL" type="String" array="False"/>
+            <parameter name="usermailL" type="String" array="False"/>
+            <parameter name="usernameS" type="String" array="False"/>
+            <parameter name="usermailS" type="String" array="False"/>
+            <parameter name="userpasswordS" type="String" array="False"/>
+            <parameter name="username" type="String" array="True"/>
+            <parameter name="usermail" type="String" array="True"/>
+            <parameter name="userpassword" type="String" array="True"/>
+            <parameter name="number" type="Integer" array="False"/>
+            <parameter name="username1" type="String" array="False"/>
+            <parameter name="usermail1" type="String" array="False"/>
+            <parameter name="userpassword1" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="credentials" type="String" array="False" size=""/>
+            <declare name="i, otp, otp1, k, j, age" type="Integer" array="False" size=""/>
+            <assign variable="otp1" expression="0"/>
+            <output expression="&quot;ENTER LOGIN IF ACCOUNT EXISTS OR ENTER SIGNUP TO CREATE ACCOUNT&quot;" newline="True"/>
+            <input variable="credentials"/>
+            <if expression="credentials==&quot;login&quot;">
+                <then>
+                    <output expression="&quot;PLEASE ENTER YOUR USERNAME&quot;" newline="True"/>
+                    <input variable="usernameL"/>
+                    <output expression="&quot;PLEASE ENTER YOUR USERMAIL&quot;" newline="True"/>
+                    <input variable="userpasswordL"/>
+                    <output expression="&quot;PLEASE ENTER YOUR USERPASSWORD&quot;" newline="True"/>
+                    <input variable="usermailL"/>
+                    <assign variable="k" expression="0"/>
+                    <assign variable="i" expression="0"/>
+                    <while expression="i&lt;number+1 &amp;&amp; k==0">
+                        <if expression="usernameL==username[i]">
+                            <then>
+                                <assign variable="k" expression="k+1"/>
+                                <assign variable="j" expression="i"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <assign variable="i" expression="i+1"/>
+                    </while>
+                    <assign variable="i" expression="0"/>
+                    <while expression="i&lt;number+1 &amp;&amp; k==1">
+                        <if expression="usermailL==usermail[i] &amp;&amp; i==j">
+                            <then>
+                                <assign variable="k" expression="k+1"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <assign variable="i" expression="i+1"/>
+                    </while>
+                    <assign variable="i" expression="0"/>
+                    <while expression="i&lt;number+1 &amp;&amp; k==2">
+                        <if expression="userpasswordL==userpassword[i] &amp;&amp; i==j">
+                            <then>
+                                <assign variable="k" expression="k+1"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <assign variable="i" expression="i+1"/>
+                    </while>
+                    <if expression="k==3">
+                        <then>
+                            <assign variable="otp" expression="random(10000)"/>
+                            <output expression="otp" newline="True"/>
+                            <output expression="&quot;PLEASE ENTER THE OTP YOU RECEIVED&quot;" newline="True"/>
+                            <input variable="otp1"/>
+                            <if expression="otp1==otp">
+                                <then>
+                                    <output expression="&quot;ACCOUNT SUCCESSFULLY LOGGED-IN&quot;" newline="True"/>
+                                    <output expression="&quot;CONNECTED TO USERGROUP1&quot;" newline="True"/>
+                                    <assign variable="username1" expression="username[j]"/>
+                                    <assign variable="usermail1" expression="usermail[j]"/>
+                                    <assign variable="userpassword1" expression="userpassword[j]"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                                    <breakpoint/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <output expression="&quot;WRONG CREDENTIALS ENTERED, RE-CHECK YOUR CREDENTIALS&quot;" newline="True"/>
+                            <breakpoint/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;PLEASE ENTER YOUR AGE&quot;" newline="True"/>
+                    <input variable="age"/>
+                    <if expression="age&gt;=16">
+                        <then>
+                            <output expression="&quot;PLEASE ENTER YOUR USERNAME&quot;" newline="True"/>
+                            <input variable="usernameS"/>
+                            <output expression="&quot;PLEASE ENTER YOUR USERMAIL&quot;" newline="True"/>
+                            <input variable="usermailS"/>
+                            <output expression="&quot;PLEASE ENTER YOUR USERPASSWORD&quot;" newline="True"/>
+                            <input variable="userpasswordS"/>
+                            <assign variable="otp" expression="random(10000)"/>
+                            <output expression="otp" newline="True"/>
+                            <output expression="&quot;PLEASE ENTER THE OTP YOU RECEIVED&quot;" newline="True"/>
+                            <input variable="otp1"/>
+                            <if expression="otp1==otp">
+                                <then>
+                                    <output expression="&quot;ACCOUNT SUCCESSFULLY REGISTERED&quot;" newline="True"/>
+                                    <output expression="&quot;CONNECTED TO USERGROUP1&quot;" newline="True"/>
+                                    <assign variable="i" expression="number+1"/>
+                                    <assign variable="username[i]" expression="usernameS"/>
+                                    <assign variable="usermail[i]" expression="usermailS"/>
+                                    <assign variable="userpassword[i]" expression="userpasswordS"/>
+                                    <assign variable="username1" expression="usernameS"/>
+                                    <assign variable="usermail1" expression="usermailS"/>
+                                    <assign variable="userpassword1" expression="userpasswordS"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                                    <breakpoint/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <output expression="&quot;AGE ELIGIBILITY IS NOT SATISFIED&quot;" newline="True"/>
+                            <breakpoint/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="DEBTS" type="None" variable="">
+        <parameters>
+            <parameter name="debtamount" type="Real" array="False"/>
+            <parameter name="interest" type="Real" array="False"/>
+            <parameter name="type" type="String" array="False"/>
+            <parameter name="username1" type="String" array="False"/>
+            <parameter name="usermail1" type="String" array="False"/>
+            <parameter name="userpassword1" type="String" array="False"/>
+            <parameter name="debtnumber" type="Integer" array="False"/>
+            <parameter name="EMIneed" type="String" array="False"/>
+            <parameter name="term" type="Integer" array="False"/>
+            <parameter name="EMI" type="Real" array="False"/>
+            <parameter name="amount" type="Integer" array="False"/>
+            <parameter name="debtinfo" type="String" array="True"/>
+        </parameters>
+        <body>
+            <output expression="&quot;ENTER BORROW TO TAKE MONEY OR ENTER LEND TO GIVE MONEY&quot;" newline="True"/>
+            <input variable="type"/>
+            <if expression="type==&quot;borrow&quot;">
+                <then>
+                    <output expression="&quot;IF YOU ARE OPTING FOR EMI PLEASE ENTER YES ELSE NO&quot;" newline="True"/>
+                    <input variable="EMIneed"/>
+                    <if expression="EMIneed==&quot;yes&quot;">
+                        <then>
+                            <declare name="debtid, i" type="Integer" array="False" size=""/>
+                            <declare name="lender, borrower, date" type="String" array="False" size=""/>
+                            <assign variable="debtid" expression="random(10000000)"/>
+                            <assign variable="debtinfo[0]" expression="&quot;DEBT ID=&quot;"/>
+                            <assign variable="debtinfo[1]" expression="ToString(debtid)"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE BORROWER&quot;" newline="True"/>
+                            <input variable="borrower"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE LENDER&quot;" newline="True"/>
+                            <input variable="lender"/>
+                            <output expression="&quot;PLEASE ENTER THE DATE OF PAYMENT&#13;&#10;**PLEASE ENTER IN DOUBLE QUOTES&quot;" newline="True"/>
+                            <input variable="date"/>
+                            <assign variable="debtinfo[2]" expression="&quot;Borrower Name:&quot;"/>
+                            <assign variable="debtinfo[3]" expression="ToString(borrower)"/>
+                            <assign variable="debtinfo[4]" expression="&quot;Lender Name&quot;"/>
+                            <assign variable="debtinfo[5]" expression="ToString(lender)"/>
+                            <assign variable="debtinfo[6]" expression="&quot;Date Of Payment:&quot;"/>
+                            <assign variable="debtinfo[7]" expression="date"/>
+                            <assign variable="i" expression="0"/>
+                            <output expression="&quot;ENTER NUMBER OF MONTHS&quot;" newline="True"/>
+                            <input variable="term"/>
+                            <assign variable="debtamount" expression="(amount*(interest/(12*100))*((1 + (interest/(12*100)))^term/(((1 + (interest/(12*100)))^term)-1)))*1000"/>
+                            <assign variable="debtinfo[8]" expression="&quot;Debt Amount:&quot;"/>
+                            <assign variable="debtinfo[9]" expression="ToString(debtamount)"/>
+                            <assign variable="debtinfo[10]" expression="&quot;Activity:&quot;"/>
+                            <assign variable="debtinfo[11]" expression="&quot;BORROWING WITH EMI&quot;"/>
+                            <for variable="i" start="0" end="11" direction="inc" step="2">
+                                <output expression="debtinfo[i] &amp; &quot; = &quot; &amp; debtinfo[i+1]" newline="True"/>
+                            </for>
+                        </then>
+                        <else>
+                            <declare name="debtid, i" type="Integer" array="False" size=""/>
+                            <declare name="lender, borrower, date" type="String" array="False" size=""/>
+                            <assign variable="debtid" expression="random(10000000)"/>
+                            <assign variable="debtinfo[0]" expression="&quot;DEBT ID=&quot;"/>
+                            <assign variable="debtinfo[1]" expression="ToString(debtid)"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE BORROWER&quot;" newline="True"/>
+                            <input variable="borrower"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE LENDER&quot;" newline="True"/>
+                            <input variable="lender"/>
+                            <output expression="&quot;PLEASE ENTER THE DATE OF PAYMENT&#13;&#10;**PLEASE ENTER IN DOUBLE QUOTES&quot;" newline="True"/>
+                            <input variable="date"/>
+                            <assign variable="debtinfo[2]" expression="&quot;Borrower Name:&quot;"/>
+                            <assign variable="debtinfo[3]" expression="ToString(borrower)"/>
+                            <assign variable="debtinfo[4]" expression="&quot;Lender Name&quot;"/>
+                            <assign variable="debtinfo[5]" expression="ToString(lender)"/>
+                            <assign variable="debtinfo[6]" expression="&quot;Date Of Payment:&quot;"/>
+                            <assign variable="debtinfo[7]" expression="date"/>
+                            <assign variable="i" expression="0"/>
+                            <assign variable="debtamount" expression="amount+((amount*interest)/100)"/>
+                            <assign variable="debtinfo[8]" expression="&quot;Debt Amount:&quot;"/>
+                            <assign variable="debtinfo[9]" expression="ToString(debtamount)"/>
+                            <assign variable="debtinfo[10]" expression="&quot;Activity:&quot;"/>
+                            <assign variable="debtinfo[11]" expression="&quot;BORROWING WITHOUT EMI&quot;"/>
+                            <for variable="i" start="0" end="11" direction="inc" step="2">
+                                <output expression="debtinfo[i] &amp; &quot; = &quot; &amp; debtinfo[i+1]" newline="True"/>
+                            </for>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;IF BORROWER IS OPTING FOR EMI PLEASE ENTER YES ELSE NO&quot;" newline="True"/>
+                    <input variable="EMIneed"/>
+                    <if expression="EMIneed==&quot;yes&quot;">
+                        <then>
+                            <declare name="debtid, i" type="Integer" array="False" size=""/>
+                            <declare name="lender, borrower, date" type="String" array="False" size=""/>
+                            <assign variable="debtid" expression="random(10000000)"/>
+                            <assign variable="debtinfo[0]" expression="&quot;DEBT ID=&quot;"/>
+                            <assign variable="debtinfo[1]" expression="ToString(debtid)"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE BORROWER&quot;" newline="True"/>
+                            <input variable="borrower"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE LENDER&quot;" newline="True"/>
+                            <input variable="lender"/>
+                            <output expression="&quot;PLEASE ENTER THE DATE OF PAYMENT&#13;&#10;**PLEASE ENTER IN DOUBLE QUOTES&quot;" newline="True"/>
+                            <input variable="date"/>
+                            <assign variable="debtinfo[2]" expression="&quot;Borrower Name:&quot;"/>
+                            <assign variable="debtinfo[3]" expression="ToString(borrower)"/>
+                            <assign variable="debtinfo[4]" expression="&quot;Lender Name&quot;"/>
+                            <assign variable="debtinfo[5]" expression="ToString(lender)"/>
+                            <assign variable="debtinfo[6]" expression="&quot;Date Of Payment:&quot;"/>
+                            <assign variable="debtinfo[7]" expression="date"/>
+                            <assign variable="i" expression="0"/>
+                            <output expression="&quot;ENTER NUMBER OF MONTHS&quot;" newline="True"/>
+                            <input variable="term"/>
+                            <assign variable="debtamount" expression="(amount*(interest/(12*100))*((1 + (interest/(12*100)))^term/(((1 + (interest/(12*100)))^term)-1)))*1000"/>
+                            <assign variable="debtinfo[8]" expression="&quot;Debt Amount:&quot;"/>
+                            <assign variable="debtinfo[9]" expression="ToString(debtamount)"/>
+                            <assign variable="debtinfo[10]" expression="&quot;Activity:&quot;"/>
+                            <assign variable="debtinfo[11]" expression="&quot;LENDING WITH EMI&quot;"/>
+                            <for variable="i" start="0" end="11" direction="inc" step="2">
+                                <output expression="debtinfo[i] &amp; &quot; = &quot; &amp; debtinfo[i+1]" newline="True"/>
+                            </for>
+                        </then>
+                        <else>
+                            <declare name="debtid, i" type="Integer" array="False" size=""/>
+                            <declare name="lender, borrower, date" type="String" array="False" size=""/>
+                            <assign variable="debtid" expression="random(10000000)"/>
+                            <assign variable="debtinfo[0]" expression="&quot;DEBT ID=&quot;"/>
+                            <assign variable="debtinfo[1]" expression="ToString(debtid)"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE BORROWER&quot;" newline="True"/>
+                            <input variable="borrower"/>
+                            <output expression="&quot;PLEASE ENTER THE NAME OF THE LENDER&quot;" newline="True"/>
+                            <input variable="lender"/>
+                            <output expression="&quot;PLEASE ENTER THE DATE OF PAYMENT&#13;&#10;**PLEASE ENTER IN DOUBLE QUOTES&quot;" newline="True"/>
+                            <input variable="date"/>
+                            <assign variable="debtinfo[2]" expression="&quot;Borrower Name:&quot;"/>
+                            <assign variable="debtinfo[3]" expression="ToString(borrower)"/>
+                            <assign variable="debtinfo[4]" expression="&quot;Lender Name&quot;"/>
+                            <assign variable="debtinfo[5]" expression="ToString(lender)"/>
+                            <assign variable="debtinfo[6]" expression="&quot;Date Of Payment:&quot;"/>
+                            <assign variable="debtinfo[7]" expression="date"/>
+                            <assign variable="i" expression="0"/>
+                            <assign variable="debtamount" expression="amount+((amount*interest)/100)"/>
+                            <assign variable="debtinfo[8]" expression="&quot;Debt Amount:&quot;"/>
+                            <assign variable="debtinfo[9]" expression="ToString(debtamount)"/>
+                            <assign variable="debtinfo[10]" expression="&quot;Activity:&quot;"/>
+                            <assign variable="debtinfo[11]" expression="&quot;BORROWING WITHOUT EMI&quot;"/>
+                            <for variable="i" start="0" end="11" direction="inc" step="2">
+                                <output expression="debtinfo[i] &amp; &quot; = &quot; &amp; debtinfo[i+1]" newline="True"/>
+                            </for>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="EXPENSETRACKER" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="x, i, price, m" type="Integer" array="False" size=""/>
+            <declare name="item" type="String" array="False" size=""/>
+            <assign variable="price" expression="0"/>
+            <assign variable="m" expression="0"/>
+            <output expression="&quot;Enter nummber of items you bought&quot;" newline="True"/>
+            <input variable="i"/>
+            <for variable="x" start="1" end="i" direction="inc" step="1">
+                <output expression="&quot;ENTER THE ITEM PURCHASED&quot;" newline="True"/>
+                <input variable="item"/>
+                <output expression="&quot;ENTER PRICE OF THE ITEM&quot;" newline="True"/>
+                <input variable="m"/>
+                <assign variable="price" expression="m+price"/>
+            </for>
+            <output expression="price" newline="True"/>
+            <if expression="price&gt;25000">
+                <then>
+                    <if expression="price&gt;50000">
+                        <then>
+                            <if expression="price&gt;100000">
+                                <then>
+                                    <output expression="&quot;Reduse your expense&quot;" newline="False"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Your expense too high&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <output expression="&quot;your expense is high&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;Keep it up&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="PAYMENTPAGE" type="Integer" variable="x">
+        <parameters>
+            <parameter name="billinfo" type="String" array="True"/>
+            <parameter name="debtinfo" type="String" array="True"/>
+        </parameters>
+        <body>
+            <output expression="&quot;WELCOME TO THE PAYMENT SECTION&quot;" newline="True"/>
+            <declare name="paymenttype, paymentmode" type="String" array="False" size=""/>
+            <declare name="cardno, otp, otp2, paymentamount, i, upino, cardpin, upipin, x" type="Integer" array="False" size=""/>
+            <assign variable="x" expression="0"/>
+            <output expression="&quot;REDIRECTED TO DEBT PAYMENT GATEWAY&#13;&#10;YOUR DEBT PAYMENT DETAILS:&quot;" newline="True"/>
+            <output expression="&quot;YOUR DEBT PAYMENT DETAILS:&quot;" newline="True"/>
+            <for variable="i" start="0" end="11" direction="inc" step="2">
+                <output expression="billinfo[i] &amp; &quot; = &quot; &amp; billinfo[i+1]" newline="True"/>
+            </for>
+            <output expression="&quot;ENTER CARD TO PAY USING CARD OR ENTER UPI TO PAY USING PAYMENT APPS&quot;" newline="True"/>
+            <input variable="paymentmode"/>
+            <if expression="paymentmode==&quot;card&quot;">
+                <then>
+                    <output expression="&quot;YOU ARE BEING REDIRECTED TO CARD PAYMENT GATEWAY&quot;" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER YOUR CARD NUMBER&quot;" newline="True"/>
+                    <input variable="cardno"/>
+                    <output expression="&quot;PLEASE ENTER CARDPIN&quot;" newline="True"/>
+                    <input variable="cardpin"/>
+                    <assign variable="otp" expression="random(10000)"/>
+                    <output expression="otp" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER THE OTP YOU RECEIVED&quot;" newline="True"/>
+                    <input variable="otp2"/>
+                    <if expression="otp2==otp">
+                        <then>
+                            <output expression="&quot;DEBT PAYMENT SUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x+1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                            <output expression="&quot;PAYMENT UNSUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x-2"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;YOU ARE BEING REDIRECTED TO UPI PAYMENT GATEWAY&quot;" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER YOUR UPI NUMBER&quot;" newline="True"/>
+                    <input variable="upino"/>
+                    <output expression="&quot;PLEASE ENTER UPIPIN&quot;" newline="True"/>
+                    <input variable="upipin"/>
+                    <assign variable="otp" expression="random(10000)"/>
+                    <output expression="otp" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER THE OTP YOU RECEIVED&quot;" newline="True"/>
+                    <input variable="otp2"/>
+                    <if expression="otp2==otp">
+                        <then>
+                            <output expression="&quot;DEBT PAYMENT SUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x+1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                            <output expression="&quot;PAYMENT UNSUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x-2"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot;REDIRECTED TO BILL PAYMENT GATEWAY&#13;&#10;YOUR BILL PAYMENT DETAILS:&quot;" newline="True"/>
+            <for variable="i" start="0" end="7" direction="inc" step="2">
+                <output expression="debtinfo[i] &amp; &quot;=&quot; &amp; debtinfo[i+1]" newline="True"/>
+            </for>
+            <output expression="&quot;ENTER CARD TO PAY USING CARD OR ENTER UPI TO PAY USING PAYMENT APPS&quot;" newline="True"/>
+            <input variable="paymentmode"/>
+            <if expression="paymentmode==&quot;card&quot;">
+                <then>
+                    <output expression="&quot;YOU ARE BEING REDIRECTED TO CARD PAYMENT GATEWAY&quot;" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER YOUR CARD NUMBER&quot;" newline="True"/>
+                    <input variable="cardno"/>
+                    <output expression="&quot;PLEASE ENTER CARDPIN&quot;" newline="True"/>
+                    <input variable="cardpin"/>
+                    <assign variable="otp" expression="random(10000)"/>
+                    <output expression="otp" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER THE OTP YOU RECEIVED&quot;" newline="True"/>
+                    <input variable="otp2"/>
+                    <if expression="otp2==otp">
+                        <then>
+                            <output expression="&quot;BILL PAYMENT SUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x+1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                            <output expression="&quot;PAYMENT UNSUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x-2"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;YOU ARE BEING REDIRECTED TO UPI PAYMENT GATEWAY&quot;" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER YOUR UPI NUMBER&quot;" newline="True"/>
+                    <input variable="upino"/>
+                    <output expression="&quot;PLEASE ENTER UPIPIN&quot;" newline="True"/>
+                    <input variable="upipin"/>
+                    <assign variable="otp" expression="random(10000)"/>
+                    <output expression="otp" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER THE OTP YOU RECEIVED&quot;" newline="True"/>
+                    <input variable="otp2"/>
+                    <if expression="otp2==otp">
+                        <then>
+                            <output expression="&quot;BILL PAYMENT SUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x+1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                            <output expression="&quot;PAYMENT UNSUCCESSFUL&quot;" newline="True"/>
+                            <assign variable="x" expression="x-2"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="RECURRING" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="otp3, otp4, amount1, timefrequency, bankno, upipin1" type="Integer" array="False" size=""/>
+            <assign variable="otp3" expression="random(10000)"/>
+            <output expression="&quot;WELCOME TO RECURRING PAYMENT SECTION&quot;" newline="True"/>
+            <declare name="purpose1, select, agreement, subscription" type="String" array="False" size=""/>
+            <output expression="&quot;ENTER AGREED IF YOU AGREE WITH THE TERMS AND CONDITIONS&quot;" newline="True"/>
+            <input variable="agreement"/>
+            <if expression="agreement==&quot;agreed&quot;">
+                <then>
+                    <output expression="&quot;SETTING UP RECURRING PAYMENT&quot;" newline="True"/>
+                    <output expression="&quot;PLEASE ENTER THE PURPOSE OF THE RECURRING PAYMENT&quot;" newline="True"/>
+                    <input variable="purpose1"/>
+                    <output expression="&quot;ENTER AMOUNT&quot;" newline="True"/>
+                    <input variable="amount1"/>
+                    <output expression="&quot;CHOOSE TIME FREQUENCY [NO. OF DAYS]&quot;" newline="True"/>
+                    <input variable="timefrequency"/>
+                    <output expression="&quot;ENTER BANK TO PAY THROUGH BANK GATEWAY&#13;&#10;ENTER UPI TO PAY THROUGH UPI GATEWAY&quot;" newline="True"/>
+                    <input variable="select"/>
+                    <if expression="select==&quot;bank&quot;">
+                        <then>
+                            <output expression="&quot;ENTER CARD NUMBER&quot;" newline="True"/>
+                            <input variable="bankno"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;ENTER UPI PIN&quot;" newline="True"/>
+                            <input variable="upipin1"/>
+                        </else>
+                    </if>
+                    <output expression="otp3" newline="True"/>
+                    <output expression="&quot;ENTER THE OTP RECEIVED&quot;" newline="True"/>
+                    <input variable="otp4"/>
+                    <if expression="otp3==otp4">
+                        <then>
+                            <output expression="&quot;AMOUNT PROCESSING&quot;" newline="True"/>
+                            <output expression="&quot;PAYMENT SUCCESSFUL&#13;&#10;AMOUNT SENT TO MERCHANT&quot;" newline="True"/>
+                            <output expression="&quot;RECURRING PAYMENT ON &quot; &amp; purpose1 &amp; &quot; OCCUR AFTER &quot; &amp; timefrequency &amp; &quot; DAYS&quot;" newline="True"/>
+                            <output expression="&quot;ENTER SUBSCRIBE TO LET THE RECURRING PAYMENT OCCUR &#13;&#10;OR&#13;&#10;ENTER STOP TO END THE RECURRING PAYMENT&quot;" newline="True"/>
+                            <input variable="subscription"/>
+                            <if expression="subscription==&quot;subscribe&quot;">
+                                <then>
+                                    <output expression="&quot;SUBSCRIBED&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;UNSUBSCRIBED&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <output expression="&quot;OTP ENTERED IS WRONG&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;TERMS AND CONDITIONS ARE NOT AGREED&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="REMAINDER" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="payment1, timefrequency1" type="String" array="False" size=""/>
+            <output expression="&quot;ENTER PAID IF PAYMENT IS DONE OR ENTER NOT PAID IF PAYMENT IS NOT DONE&quot;" newline="True"/>
+            <input variable="payment1"/>
+            <if expression="payment1==&quot;paid&quot;">
+                <then>
+                    <output expression="&quot;REMAINDER IS OFF&quot;" newline="True"/>
+                </then>
+                <else>
+                    <while expression="payment1!=&quot;paid&quot;">
+                        <assign variable="timefrequency1" expression="&quot;24hrs&quot;"/>
+                        <output expression="&quot;COMPLETE THE PAYMENT&quot;" newline="True"/>
+                        <output expression="&quot;ENTER PAID IF PAYMENT IS DONE OR ENTER NOT PAID IF PAYMENT IS NOT DONE&quot;" newline="True"/>
+                        <input variable="payment1"/>
+                    </while>
+                    <output expression="&quot;REMAINDER IS OFF&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="SMMT" type="None" variable="">
+        <parameters>
+            <parameter name="y" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="smmtscore" type="Integer" array="False" size=""/>
+            <assign variable="smmtscore" expression="250"/>
+            <output expression="&quot;POINTS YOU SCORED BY COMEPLETING THE PAYMENT: &quot; &amp; y" newline="True"/>
+            <assign variable="smmtscore" expression="smmtscore+(y*10)"/>
+            <output expression="&quot;YOUR TOTAL SMMTSCORE IS: &quot; &amp; smmtscore" newline="True"/>
+            <if expression="smmtscore&lt;0">
+                <then>
+                    <output expression="&quot;Your account have be deactivated due to low smmt score&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="smmtscore&gt;=0 &amp;&amp; smmtscore&lt;200">
+                        <then>
+                            <output expression="&quot;You are currently in bronze club&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="smmtscore&gt;=200 &amp;&amp; smmtscore&lt;400">
+                                <then>
+                                    <output expression="&quot;You are currently in silver club&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <if expression="smmtscore&gt;=400 &amp;&amp; smmtscore&lt;600">
+                                        <then>
+                                            <output expression="&quot;You are currently in gold club&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <if expression="smmtscore&gt;=600 &amp;&amp; smmtscore&lt;800">
+                                                <then>
+                                                    <output expression="&quot;You are currently in Diamond club&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="smmtscore&gt;=800 &amp;&amp; smmtscore&lt;=1000">
+                                                        <then>
+                                                            <output expression="&quot;You are currently in platinum club&quot;" newline="True"/>
+                                                        </then>
+                                                        <else/>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
